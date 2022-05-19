@@ -1,19 +1,14 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import GalleryScreen from './src/screens/GalleryScreen';
+import {commonStyles} from './src/screens/styles/commonStyles';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <GalleryScreen />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
