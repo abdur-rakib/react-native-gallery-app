@@ -1,13 +1,15 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import GalleryScreen from './src/screens/GalleryScreen';
-import {commonStyles} from './src/screens/styles/commonStyles';
+import {StatusBar} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import GalleryStackNavigator from './src/navigation/GalleryStackNavigator';
+import {colors} from './src/theme';
 
 const App = () => {
   return (
-    <SafeAreaView style={commonStyles.container}>
-      <GalleryScreen />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <StatusBar backgroundColor={colors.primary} barStyle="dark-content" />
+      <GalleryStackNavigator />
+    </SafeAreaProvider>
   );
 };
 
