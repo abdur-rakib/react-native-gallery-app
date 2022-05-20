@@ -1,11 +1,12 @@
-import {Image, View, Text} from 'react-native';
+import {Image, View, Text, Pressable} from 'react-native';
 import React from 'react';
 import {commonStyles} from '../../styles/commonStyles';
 import styles from './styles';
+import {spacing} from '../../theme';
 
 const PhotoScreen = ({route}) => {
   const {item} = route.params;
-  console.log('🚀 ~ file: PhotoScreen.tsx ~ line 6 ~ PhotoScreen ~ item', item);
+
   return (
     <View style={commonStyles.container}>
       <View style={styles.imageContainer}>
@@ -18,8 +19,12 @@ const PhotoScreen = ({route}) => {
         />
       </View>
       <View style={styles.actionButtonContainer}>
-        <Text>Save</Text>
-        <Text>Share</Text>
+        <Pressable style={styles.actionButton}>
+          <Text style={styles.actionText}>Save</Text>
+        </Pressable>
+        <Pressable style={styles.actionButton}>
+          <Text style={styles.actionText}>Share</Text>
+        </Pressable>
       </View>
     </View>
   );
