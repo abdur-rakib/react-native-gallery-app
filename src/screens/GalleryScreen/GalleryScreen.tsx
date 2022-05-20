@@ -13,7 +13,7 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
   const getImage = async () => {
     try {
       const {data} = await axios.get(
-        `https://api.unsplash.com/photos/?client_id=${CLIENT_KEY}&per_page=30`,
+        `https://api.unsplash.com/photos/?client_id=${CLIENT_KEY}&page=1`,
       );
       setImages(data);
     } catch (error) {

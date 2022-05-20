@@ -1,4 +1,4 @@
-import {Image, View, Text, TouchableOpacity, Platform} from 'react-native';
+import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import React, {useState} from 'react';
 import Share from 'react-native-share';
 import CameraRoll from '@react-native-community/cameraroll';
@@ -7,6 +7,7 @@ import {commonStyles} from '../../styles/commonStyles';
 import styles from './styles';
 import getPermissionAndroid from '../../utlis/getPermissionAndroid';
 import SimpleToast from 'react-native-simple-toast';
+import FastImage from 'react-native-fast-image';
 
 const PhotoScreen = ({route}) => {
   const [disabledSave, setDisabledSave] = useState(false);
@@ -72,12 +73,13 @@ const PhotoScreen = ({route}) => {
   return (
     <View style={commonStyles.container}>
       <View style={styles.imageContainer}>
-        <Image
+        <FastImage
           style={styles.image}
           source={{
             uri: item.urls.regular,
+            priority: FastImage.priority.normal,
           }}
-          resizeMode="contain"
+          resizeMode={FastImage.resizeMode.contain}
         />
       </View>
       <View style={styles.actionButtonContainer}>
