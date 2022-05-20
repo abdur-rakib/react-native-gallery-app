@@ -8,7 +8,9 @@ const GalleryItem: React.FC = ({item}) => {
   const navigation = useNavigation();
   // handle go to details
   const handlePress = () => {
-    navigation.navigate('Photo');
+    navigation.navigate('Photo', {
+      item,
+    });
   };
   return (
     <Pressable onPress={handlePress} style={styles.container}>

@@ -1,15 +1,14 @@
 import {FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import {commonStyles} from '../../styles/commonStyles';
 import {COMPONENT_TYPE} from '../../../types';
-import axios from 'axios';
 import GalleryItem from '../../components/GalleryItem';
 
 const CLIENT_KEY = 'XdymHxISP3LPo2P0RGC6UJVNPqDy2q8UbLOI3vwaRyg';
 
 const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
   const [images, setImages] = useState([]);
-  console.log('🚀 ~ file: GalleryScreen.tsx ~ line 9 ~ images', images);
 
   const getImage = async () => {
     try {

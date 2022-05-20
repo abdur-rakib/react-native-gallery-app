@@ -10,14 +10,14 @@ const GalleryStackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{headerTitleAlign: 'center', headerShadowVisible: false}}
+        screenOptions={{headerTitleAlign: 'center'}}
         initialRouteName="Gallery">
         <Stack.Screen name="Gallery" component={GalleryScreen} />
         <Stack.Screen
-          options={{
+          options={({route}) => ({
+            title: new Date(route.params.item.created_at).toDateString(),
             headerBackTitleVisible: false,
-            headerTitle: '25 March, 2022',
-          }}
+          })}
           name="Photo"
           component={PhotoScreen}
         />
