@@ -8,6 +8,8 @@ import styles from './styles';
 import getPermissionAndroid from '../../utlis/getPermissionAndroid';
 import SimpleToast from 'react-native-simple-toast';
 import FastImage from 'react-native-fast-image';
+import ImageZoom from 'react-native-image-pan-zoom';
+import {spacing} from '../../theme';
 
 const PhotoScreen = ({route}) => {
   const [disabledSave, setDisabledSave] = useState(false);
@@ -73,14 +75,22 @@ const PhotoScreen = ({route}) => {
   return (
     <View style={commonStyles.container}>
       <View style={styles.imageContainer}>
-        <FastImage
-          style={styles.image}
-          source={{
-            uri: item.urls.regular,
-            priority: FastImage.priority.normal,
-          }}
-          resizeMode={FastImage.resizeMode.contain}
-        />
+        <ImageZoom
+          style={commonStyles.container}
+          cropWidth={spacing.screenWidth}
+          cropHeight={spacing.screenHeight}
+          imageWidth={spacing.screenWidth}
+          imageHeight={spacing.screenHeight}
+          maxOverflow={0}>
+          <FastImage
+            style={styles.image}
+            source={{
+              uri: item.urls.regular,
+              priority: FastImage.priority.normal,
+            }}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+        </ImageZoom>
       </View>
       <View style={styles.actionButtonContainer}>
         <TouchableOpacity
