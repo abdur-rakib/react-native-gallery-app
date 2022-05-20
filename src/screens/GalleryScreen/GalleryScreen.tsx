@@ -37,7 +37,7 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
         data={images}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        numColumns={4}
+        numColumns={3}
       />
     </View>
   );

@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: 100,
-    width: '25%',
+    height: 120,
+    width: '33%',
     alignItems: 'center',
   },
   thumbnail: {
