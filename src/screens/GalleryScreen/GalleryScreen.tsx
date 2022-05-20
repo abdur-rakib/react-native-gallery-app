@@ -1,7 +1,7 @@
 import {FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {commonStyles} from '../../styles/commonStyles';
+import axios from 'axios';
 import {COMPONENT_TYPE} from '../../../types';
 import GalleryItem from '../../components/GalleryItem';
 
