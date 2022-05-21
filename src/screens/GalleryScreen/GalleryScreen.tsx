@@ -1,44 +1,33 @@
 import {FlatList, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {commonStyles} from '../../styles/commonStyles';
-import axios from 'axios';
 import {COMPONENT_TYPE} from '../../../types';
 import GalleryItem from '../../components/GalleryItem';
-
-const CLIENT_KEY = 'XdymHxISP3LPo2P0RGC6UJVNPqDy2q8UbLOI3vwaRyg';
+import SimpleToast from 'react-native-simple-toast';
+import {useQuery} from 'react-query';
+import {fetchImages} from '../../api';
 
 const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
-  const [images, setImages] = useState([]);
-
-  const getImage = async () => {
-    try {
-      const {data} = await axios.get(
-        `https://api.unsplash.com/photos/?client_id=${CLIENT_KEY}&page=1`,
-      );
-      setImages(data);
-    } catch (error) {
-      console.log(
-        '🚀 ~ file: GalleryScreen.tsx ~ line 18 ~ getImage ~ error',
-        error,
-      );
-    }
-  };
-
-  // set images
-  useEffect(() => {
-    getImage();
-  }, []);
+  // react-query
+  // get image data
+  const {isLoading, error, data} = useQuery('images', () => fetchImages(1));
 
   const renderItem = ({item}) => <GalleryItem item={item} />;
   return (
     <View style={commonStyles.container}>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={images}
+        data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         numColumns={3}
+        // onEndReached={fetchImages}
+        onEndReachedThreshold={10}
+        initialNumToRender={30}
+        windowSize={101}
+        maxToRenderPerBatch={30}
       />
+      {error && SimpleToast.show(error.message)}
     </View>
   );
 };
