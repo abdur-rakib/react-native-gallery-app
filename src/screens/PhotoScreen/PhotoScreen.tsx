@@ -29,7 +29,7 @@ const PhotoScreen = ({route}) => {
     setDisabledSave(true);
     RNFetchBlob.config({
       fileCache: true,
-      appendExt: 'png',
+      appendExt: 'JPEG',
     })
       .fetch('GET', item.urls.regular)
       .then((res: {data: string}) => {
