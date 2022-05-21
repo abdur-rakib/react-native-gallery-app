@@ -7,4 +7,8 @@ export const commonStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

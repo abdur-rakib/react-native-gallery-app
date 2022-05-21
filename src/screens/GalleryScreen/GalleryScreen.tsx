@@ -1,4 +1,4 @@
-import {ActivityIndicator, FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
 import {commonStyles} from '../../styles/commonStyles';
 import {COMPONENT_TYPE} from '../../../types';
@@ -6,6 +6,7 @@ import GalleryItem from '../../components/GalleryItem';
 import SimpleToast from 'react-native-simple-toast';
 import {useInfiniteQuery} from 'react-query';
 import {fetchImages} from '../../api';
+import Loading from '../../components/shared/Loading';
 
 const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
   // react-query
@@ -28,7 +29,9 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
   return (
     <View style={commonStyles.container}>
       {status === 'loading' ? (
-        <Text>LOADING</Text>
+        <View style={[commonStyles.container, commonStyles.center]}>
+          <Loading />
+        </View>
       ) : (
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -41,8 +44,10 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
           initialNumToRender={30}
           windowSize={101}
           maxToRenderPerBatch={30}
+          ListFooterComponent={isFetchingNextPage ? <Loading /> : null}
         />
       )}
+
       {status === 'error' && SimpleToast.show(error.message)}
     </View>
   );
