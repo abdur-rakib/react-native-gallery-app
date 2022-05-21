@@ -1,6 +1,5 @@
 import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import React, {useState} from 'react';
-import Share from 'react-native-share';
 import CameraRoll from '@react-native-community/cameraroll';
 import RNFetchBlob from 'rn-fetch-blob';
 import {commonStyles} from '../../styles/commonStyles';
@@ -10,31 +9,12 @@ import SimpleToast from 'react-native-simple-toast';
 import FastImage from 'react-native-fast-image';
 import ImageZoom from 'react-native-image-pan-zoom';
 import {spacing} from '../../theme';
+import {handleShareImage} from '../../sevices';
+import {ERROR_TYPE} from '../../../types';
 
 const PhotoScreen = ({route}) => {
   const [disabledSave, setDisabledSave] = useState(false);
   const {item} = route.params;
-
-  // handle share image
-  const handleShareImage = async () => {
-    const options = {
-      title: item.description,
-      url: item.urls.regular,
-      message: '',
-    };
-    try {
-      const shareResponse = await Share.open(options);
-      console.log(
-        '🚀 ~ file: PhotoScreen.tsx ~ line 23 ~ handleShareImage ~ shareResponse',
-        shareResponse,
-      );
-    } catch (err) {
-      console.log(
-        '🚀 ~ file: PhotoScreen.tsx ~ line 28 ~ handleShareImage ~ err',
-        err,
-      );
-    }
-  };
 
   // handle save image from url
   const handleSaveImage = async () => {
@@ -60,13 +40,13 @@ const PhotoScreen = ({route}) => {
             );
             setDisabledSave(false);
           })
-          .catch(error => {
+          .catch((error: ERROR_TYPE) => {
             SimpleToast.show(error.message, SimpleToast.SHORT);
             setDisabledSave(false);
           })
           .finally(() => setDisabledSave(false));
       })
-      .catch((error: {message: string}) => {
+      .catch((error: ERROR_TYPE) => {
         setDisabledSave(false);
         SimpleToast.show(error.message, SimpleToast.SHORT);
       });
@@ -100,7 +80,7 @@ const PhotoScreen = ({route}) => {
           <Text style={styles.actionText}>Save</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={handleShareImage}
+          onPress={() => handleShareImage(item)}
           style={styles.actionButton}>
           <Text style={styles.actionText}>Share</Text>
         </TouchableOpacity>
