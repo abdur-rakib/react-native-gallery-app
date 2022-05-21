@@ -11,6 +11,7 @@ import ImageZoom from 'react-native-image-pan-zoom';
 import {spacing} from '../../theme';
 import {handleShareImage} from '../../sevices';
 import {ERROR_TYPE} from '../../../types';
+import CustomImage from '../../components/shared/CustomImage';
 
 const PhotoScreen = ({route}) => {
   const [disabledSave, setDisabledSave] = useState(false);
@@ -62,12 +63,9 @@ const PhotoScreen = ({route}) => {
           imageWidth={spacing.screenWidth}
           imageHeight={spacing.screenHeight}
           maxOverflow={0}>
-          <FastImage
+          <CustomImage
+            uri={item.urls.regular}
             style={styles.image}
-            source={{
-              uri: item.urls.regular,
-              priority: FastImage.priority.normal,
-            }}
             resizeMode={FastImage.resizeMode.contain}
           />
         </ImageZoom>

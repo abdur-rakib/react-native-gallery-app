@@ -3,6 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import FastImage from 'react-native-fast-image';
+import CustomImage from '../shared/CustomImage';
 
 const GalleryItem: React.FC = ({item}) => {
   // navigate
@@ -15,13 +16,10 @@ const GalleryItem: React.FC = ({item}) => {
   };
   return (
     <Pressable onPress={handlePress} style={styles.container}>
-      <FastImage
-        style={styles.thumbnail}
-        source={{
-          uri: item.urls.thumb,
-          priority: FastImage.priority.normal,
-        }}
+      <CustomImage
         resizeMode={FastImage.resizeMode.cover}
+        uri={item.urls.thumb}
+        style={styles.thumbnail}
       />
     </Pressable>
   );
