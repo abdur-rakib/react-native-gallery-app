@@ -1,19 +1,20 @@
-import {Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import React from 'react';
+import React, {useState} from 'react';
 import {CUSTOM_IMAGE_COMPONENt_PROP_TYPE} from '../../../../types';
+const placeholderImage = require('../../../assets/placeholder.png');
 
 const CustomImage = ({
   style,
   uri,
   resizeMode,
 }: CUSTOM_IMAGE_COMPONENt_PROP_TYPE) => {
+  const [source, setSource] = useState(placeholderImage);
   return (
     <FastImage
       style={style}
-      source={{
-        uri: uri,
-        priority: FastImage.priority.normal,
+      source={source}
+      onLoad={() => {
+        setSource({uri: uri, priority: FastImage.priority.normal});
       }}
       resizeMode={resizeMode}
     />
