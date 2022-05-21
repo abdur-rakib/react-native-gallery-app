@@ -1,12 +1,12 @@
-import axios from 'axios';
 import {baseUrl, CLIENT_KEY} from '../config';
 
 // get images from unsplash
-const fetchImages = async (page: number) => {
-  const {data} = await axios.get(
-    `${baseUrl}?client_id=${CLIENT_KEY}&page=${page}&per_page=30`,
+const fetchImages = async ({pageParam = 1}) => {
+  const response = await fetch(
+    `${baseUrl}?client_id=${CLIENT_KEY}&page=${pageParam}&per_page=30`,
   );
-  return data;
+  const results = await response.json();
+  return {results, nextPage: pageParam + 1};
 };
 
 export {fetchImages};
