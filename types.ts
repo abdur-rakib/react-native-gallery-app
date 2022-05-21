@@ -1,3 +1,4 @@
+import {GestureResponderEvent} from 'react-native';
 import {ResizeMode} from 'react-native-fast-image';
 
 // component type
@@ -19,4 +20,11 @@ export type CUSTOM_IMAGE_COMPONENt_PROP_TYPE = {
   style: {};
   uri: string;
   resizeMode: ResizeMode | undefined;
+};
+
+// app button props type
+export type APP_BUTTON_PROP_TYPE = {
+  title: string;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
+  disabled?: boolean;
 };

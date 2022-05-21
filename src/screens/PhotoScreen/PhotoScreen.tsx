@@ -12,6 +12,7 @@ import {spacing} from '../../theme';
 import {handleShareImage} from '../../sevices';
 import {ERROR_TYPE} from '../../../types';
 import CustomImage from '../../components/shared/CustomImage';
+import AppButton from '../../components/shared/AppButton';
 
 const PhotoScreen = ({route}) => {
   const [disabledSave, setDisabledSave] = useState(false);
@@ -71,17 +72,12 @@ const PhotoScreen = ({route}) => {
         </ImageZoom>
       </View>
       <View style={styles.actionButtonContainer}>
-        <TouchableOpacity
+        <AppButton
           disabled={disabledSave}
+          title="Download"
           onPress={handleSaveImage}
-          style={styles.actionButton}>
-          <Text style={styles.actionText}>Save</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => handleShareImage(item)}
-          style={styles.actionButton}>
-          <Text style={styles.actionText}>Share</Text>
-        </TouchableOpacity>
+        />
+        <AppButton title="Share" onPress={() => handleShareImage(item)} />
       </View>
     </View>
   );
