@@ -1,58 +1,16 @@
-import {View, Text, TouchableOpacity, Platform} from 'react-native';
+import {View} from 'react-native';
 import React, {useState} from 'react';
-import CameraRoll from '@react-native-community/cameraroll';
-import RNFetchBlob from 'rn-fetch-blob';
 import {commonStyles} from '../../styles/commonStyles';
 import styles from './styles';
-import getPermissionAndroid from '../../utlis/getPermissionAndroid';
-import SimpleToast from 'react-native-simple-toast';
 import FastImage from 'react-native-fast-image';
 import ImageZoom from 'react-native-image-pan-zoom';
 import {spacing} from '../../theme';
-import {handleShareImage} from '../../sevices';
-import {ERROR_TYPE} from '../../../types';
+import {handleShareImage, saveImageToStorage} from '../../sevices';
 import CustomImage from '../../components/shared/CustomImage';
 import AppButton from '../../components/shared/AppButton';
 
-const PhotoScreen = ({route}) => {
-  const [disabledSave, setDisabledSave] = useState(false);
+const PhotoScreen: React.FC = ({route}) => {
   const {item} = route.params;
-
-  // handle save image from url
-  const handleSaveImage = async () => {
-    // for android device we need to ensure permission
-    if (Platform.OS === 'android') {
-      const granted = await getPermissionAndroid();
-      if (!granted) {
-        return;
-      }
-    }
-    setDisabledSave(true);
-    RNFetchBlob.config({
-      fileCache: true,
-      appendExt: 'JPEG',
-    })
-      .fetch('GET', item.urls.regular)
-      .then((res: {data: string}) => {
-        CameraRoll.save(res.data, {type: 'photo'})
-          .then(() => {
-            SimpleToast.show(
-              'Image Downloaded Successfully',
-              SimpleToast.SHORT,
-            );
-            setDisabledSave(false);
-          })
-          .catch((error: ERROR_TYPE) => {
-            SimpleToast.show(error.message, SimpleToast.SHORT);
-            setDisabledSave(false);
-          })
-          .finally(() => setDisabledSave(false));
-      })
-      .catch((error: ERROR_TYPE) => {
-        setDisabledSave(false);
-        SimpleToast.show(error.message, SimpleToast.SHORT);
-      });
-  };
 
   return (
     <View style={commonStyles.container}>
@@ -73,9 +31,8 @@ const PhotoScreen = ({route}) => {
       </View>
       <View style={styles.actionButtonContainer}>
         <AppButton
-          disabled={disabledSave}
           title="Download"
-          onPress={handleSaveImage}
+          onPress={() => saveImageToStorage(item.urls.regular)}
         />
         <AppButton title="Share" onPress={() => handleShareImage(item)} />
       </View>

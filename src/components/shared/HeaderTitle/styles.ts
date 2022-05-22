@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   date: {
     fontSize: spacing.p4,
     color: colors.primaryText,
-    fontWeight: '500',
   },
 });
 
