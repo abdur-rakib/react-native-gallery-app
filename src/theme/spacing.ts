@@ -7,6 +7,7 @@ export const spacing = {
   p1: 18,
   p2: 16,
   p3: 14,
+  p4: 13,
   screenWidth: Dimensions.get('window').width,
   screenHeight: Dimensions.get('window').height,
 };

@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import GalleryScreen from '../screens/GalleryScreen';
 import PhotoScreen from '../screens/PhotoScreen';
+import HeaderTitle from '../components/shared/HeaderTitle';
 
 const GalleryStackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -15,7 +16,12 @@ const GalleryStackNavigator = () => {
         <Stack.Screen name="Gallery" component={GalleryScreen} />
         <Stack.Screen
           options={({route}) => ({
-            title: new Date(route.params.item.created_at).toDateString(),
+            headerTitle: () => (
+              <HeaderTitle
+                username={route.params.item.user.first_name}
+                created_date={route.params.item.created_at}
+              />
+            ),
             headerBackTitleVisible: false,
           })}
           name="Photo"

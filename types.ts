@@ -28,3 +28,9 @@ export type APP_BUTTON_PROP_TYPE = {
   onPress: ((event: GestureResponderEvent) => void) | undefined;
   disabled?: boolean;
 };
+
+// header title prop type
+export type HEADER_TITLE_PROP_TYPE = {
+  username: string;
+  created_date: string;
+};
