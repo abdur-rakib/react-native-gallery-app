@@ -1,8 +1,15 @@
 import {ActivityIndicator, StyleSheet} from 'react-native';
 import React from 'react';
+import {colors} from '../../../theme';
 
 const Loading: React.FC = () => {
-  return <ActivityIndicator style={styles.loading} size="large" />;
+  return (
+    <ActivityIndicator
+      color={colors.secondaryText}
+      style={styles.loading}
+      size="large"
+    />
+  );
 };
 
 export default Loading;

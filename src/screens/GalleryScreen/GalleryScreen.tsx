@@ -40,7 +40,7 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
           keyExtractor={item => item.id}
           numColumns={3}
           onEndReached={loadMore}
-          onEndReachedThreshold={1}
+          onEndReachedThreshold={0.5}
           initialNumToRender={30}
           windowSize={101}
           maxToRenderPerBatch={30}
