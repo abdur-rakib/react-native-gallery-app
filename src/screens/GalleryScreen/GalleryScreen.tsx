@@ -46,6 +46,7 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = () => {
       regular_uri={item.urls.regular}
       username={item.user.first_name}
       date={item.created_at}
+      description={item.description}
     />
   );
 

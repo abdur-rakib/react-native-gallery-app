@@ -9,7 +9,7 @@ export type COMPONENT_TYPE = {
 // share image function param type
 export type SHARE_IMAGE_PARAM_TYPE = {
   description: string;
-  urls: {regular: string};
+  regular_uri: string;
 };
 
 // error type
@@ -41,4 +41,5 @@ export type SINGLE_PHOTO_PROP_TYPE = {
   regular_uri: string;
   username: string;
   date: string;
+  description: string;
 };

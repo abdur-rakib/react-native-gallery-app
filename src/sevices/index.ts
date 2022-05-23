@@ -10,7 +10,7 @@ import getPermissionAndroid from '../utlis/getPermissionAndroid';
 const handleShareImage = async (item: SHARE_IMAGE_PARAM_TYPE) => {
   const options = {
     title: item.description,
-    url: item.urls.regular,
+    url: item.regular_uri,
     message: '',
   };
   try {

@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {commonStyles} from '../../styles/commonStyles';
 import styles from './styles';
 import FastImage from 'react-native-fast-image';

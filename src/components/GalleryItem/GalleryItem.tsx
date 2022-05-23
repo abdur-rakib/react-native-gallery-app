@@ -11,6 +11,7 @@ const GalleryItem: React.FC<SINGLE_PHOTO_PROP_TYPE> = ({
   regular_uri,
   username,
   date,
+  description,
 }) => {
   // navigate
   const navigation = useNavigation();
@@ -21,6 +22,7 @@ const GalleryItem: React.FC<SINGLE_PHOTO_PROP_TYPE> = ({
     regular_uri,
     username,
     date,
+    description,
   };
   // handle go to details
   const handlePress = () => {
