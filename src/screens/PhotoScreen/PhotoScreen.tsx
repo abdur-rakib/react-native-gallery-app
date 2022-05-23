@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {commonStyles} from '../../styles/commonStyles';
 import styles from './styles';
 import FastImage from 'react-native-fast-image';
@@ -10,7 +10,15 @@ import CustomImage from '../../components/shared/CustomImage';
 import AppButton from '../../components/shared/AppButton';
 
 const PhotoScreen: React.FC = ({route}) => {
+  const [loading, setLoading] = useState(false);
   const {item} = route.params;
+
+  // handle save image
+  const handleSaveImage = async () => {
+    setLoading(true);
+    await saveImageToStorage(item.regular_uri);
+    setLoading(false);
+  };
 
   return (
     <View style={commonStyles.container}>
@@ -31,8 +39,9 @@ const PhotoScreen: React.FC = ({route}) => {
       </View>
       <View style={styles.actionButtonContainer}>
         <AppButton
+          disabled={loading}
           title="Download"
-          onPress={() => saveImageToStorage(item.regular_uri)}
+          onPress={handleSaveImage}
         />
         <AppButton title="Share" onPress={() => handleShareImage(item)} />
       </View>

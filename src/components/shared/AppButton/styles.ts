@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.secondary,
     borderRadius: 7,
     shadowColor: colors.secondaryText,
     shadowOffset: {
