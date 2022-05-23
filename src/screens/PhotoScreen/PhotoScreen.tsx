@@ -23,7 +23,7 @@ const PhotoScreen: React.FC = ({route}) => {
           imageHeight={spacing.screenHeight}
           maxOverflow={0}>
           <CustomImage
-            uri={item.urls.regular}
+            uri={item.regular_uri}
             style={styles.image}
             resizeMode={FastImage.resizeMode.contain}
           />
@@ -32,7 +32,7 @@ const PhotoScreen: React.FC = ({route}) => {
       <View style={styles.actionButtonContainer}>
         <AppButton
           title="Download"
-          onPress={() => saveImageToStorage(item.urls.regular)}
+          onPress={() => saveImageToStorage(item.regular_uri)}
         />
         <AppButton title="Share" onPress={() => handleShareImage(item)} />
       </View>

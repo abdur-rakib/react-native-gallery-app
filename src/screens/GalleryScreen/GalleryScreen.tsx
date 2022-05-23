@@ -24,7 +24,14 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
     }
   };
 
-  const renderItem = ({item}) => <GalleryItem item={item} />;
+  const renderItem = ({item}) => (
+    <GalleryItem
+      thumb_uri={item.urls.thumb}
+      regular_uri={item.urls.regular}
+      username={item.user.first_name}
+      date={item.created_at}
+    />
+  );
 
   return (
     <View style={commonStyles.container}>

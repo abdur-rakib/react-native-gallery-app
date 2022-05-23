@@ -1,13 +1,13 @@
 import FastImage from 'react-native-fast-image';
 import React, {useState} from 'react';
-import {CUSTOM_IMAGE_COMPONENt_PROP_TYPE} from '../../../../types';
+import {CUSTOM_IMAGE_COMPONENT_PROP_TYPE} from '../../../../types';
 const placeholderImage = require('../../../assets/placeholder.png');
 
-const CustomImage = ({
+const CustomImage: React.FC<CUSTOM_IMAGE_COMPONENT_PROP_TYPE> = ({
   style,
   uri,
   resizeMode,
-}: CUSTOM_IMAGE_COMPONENt_PROP_TYPE) => {
+}) => {
   const [source, setSource] = useState(placeholderImage);
   return (
     <FastImage

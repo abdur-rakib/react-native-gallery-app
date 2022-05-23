@@ -34,3 +34,11 @@ export type HEADER_TITLE_PROP_TYPE = {
   username: string;
   created_date: string;
 };
+
+// single photo prop type
+export type SINGLE_PHOTO_PROP_TYPE = {
+  thumb_uri: string;
+  regular_uri: string;
+  username: string;
+  date: string;
+};

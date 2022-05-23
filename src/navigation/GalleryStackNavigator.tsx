@@ -18,8 +18,8 @@ const GalleryStackNavigator = () => {
           options={({route}) => ({
             headerTitle: () => (
               <HeaderTitle
-                username={route.params.item.user.first_name}
-                created_date={route.params.item.created_at}
+                username={route.params.item.username}
+                created_date={route.params.item.date}
               />
             ),
             headerBackTitleVisible: false,
