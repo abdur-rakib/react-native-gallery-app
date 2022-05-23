@@ -1,5 +1,5 @@
 import {FlatList, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {commonStyles} from '../../styles/commonStyles';
 import {COMPONENT_TYPE} from '../../../types';
 import GalleryItem from '../../components/GalleryItem';
@@ -8,20 +8,36 @@ import {useInfiniteQuery} from 'react-query';
 import {fetchImages} from '../../api';
 import Loading from '../../components/shared/Loading';
 
-const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
+const GalleryScreen: React.FC<COMPONENT_TYPE> = () => {
+  const [isRefreshing, setIsRefreshing] = useState(false);
   // react-query
   // get image data
-  const {data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status} =
-    useInfiniteQuery('images', fetchImages, {
-      getNextPageParam: lastPage => {
-        return lastPage.nextPage;
-      },
-    });
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    status,
+    refetch,
+  } = useInfiniteQuery('images', fetchImages, {
+    getNextPageParam: lastPage => {
+      return lastPage.nextPage;
+    },
+  });
 
+  // handle load more
   const loadMore = () => {
     if (hasNextPage) {
       fetchNextPage();
     }
+  };
+
+  // handle pull down to refresh
+  const onRefresh = async () => {
+    setIsRefreshing(true);
+    await refetch();
+    setIsRefreshing(false);
   };
 
   const renderItem = ({item}) => (
@@ -43,6 +59,8 @@ const GalleryScreen: React.FC<COMPONENT_TYPE> = ({navigation}) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={data?.pages.map(page => page.results).flat()}
+          refreshing={isRefreshing}
+          onRefresh={onRefresh}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           numColumns={3}
