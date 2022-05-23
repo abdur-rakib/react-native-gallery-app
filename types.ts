@@ -16,7 +16,7 @@ export type SHARE_IMAGE_PARAM_TYPE = {
 export type ERROR_TYPE = any | {message?: string};
 
 // custom image component prop type
-export type CUSTOM_IMAGE_COMPONENt_PROP_TYPE = {
+export type CUSTOM_IMAGE_COMPONENT_PROP_TYPE = {
   style: {};
   uri: string;
   resizeMode: ResizeMode | undefined;
