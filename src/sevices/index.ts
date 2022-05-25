@@ -29,13 +29,17 @@ const saveImageToStorage = async (image_url: string) => {
       return;
     }
   }
-  const res = await RNFetchBlob.config({
-    fileCache: true,
-    appendExt: 'JPEG',
-  }).fetch('GET', image_url);
   try {
-    await CameraRoll.save(res.data, {type: 'photo'});
-    SimpleToast.show('Image Downloaded Successfully', SimpleToast.SHORT);
+    const res = await RNFetchBlob.config({
+      fileCache: true,
+      appendExt: 'JPEG',
+    }).fetch('GET', image_url);
+    try {
+      await CameraRoll.save(res.data, {type: 'photo'});
+      SimpleToast.show('Image Downloaded Successfully', SimpleToast.SHORT);
+    } catch (error: ERROR_TYPE) {
+      SimpleToast.show(error.message, SimpleToast.SHORT);
+    }
   } catch (error: ERROR_TYPE) {
     SimpleToast.show(error.message, SimpleToast.SHORT);
   }
