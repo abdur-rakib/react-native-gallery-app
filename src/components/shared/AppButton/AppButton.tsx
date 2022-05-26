@@ -16,6 +16,7 @@ const AppButton: React.FC<APP_BUTTON_PROP_TYPE> = ({
       style={{
         ...styles.actionButton,
         backgroundColor: disabled ? '#f5f5f54d' : colors.secondary,
+        shadowColor: disabled ? '#f5f5f54d' : colors.secondaryText,
       }}>
       <Text style={styles.actionText}>{title}</Text>
     </TouchableOpacity>

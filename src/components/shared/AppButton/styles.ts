@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 7,
-    shadowColor: colors.secondaryText,
     shadowOffset: {
       width: 0,
       height: 0.5,
