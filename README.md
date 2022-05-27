@@ -4,7 +4,8 @@ Gallery app that displays a list of photos, built with [React Native](https://re
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+[![Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-11.png](https://i.postimg.cc/zBt9xqG1/Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-11.png)](https://postimg.cc/k6S143Sj)[![Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-45.png](https://i.postimg.cc/FzcXz2h5/Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-45.png)](https://postimg.cc/ctsb5kKX)
+[![Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-56.png](https://i.postimg.cc/q7gYg9Gb/Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-08-56.png)](https://postimg.cc/KKSQHpwB)[![Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-10-29.png](https://i.postimg.cc/595P94V9/Simulator-Screen-Shot-i-Phone-13-2022-05-27-at-20-10-29.png)](https://postimg.cc/236d2fyg)
 
 ## Tech Stack
 
@@ -52,12 +53,13 @@ $ yarn android
 - Press single photo to view fullscreen of this photo
 - User can zoom in/out images
 - The user has an infinite scroll on the gallery screen
+- Pull to refresh images
 - Cache images
 - Cache API response
 - Allow saving photos in JPEG format to the local gallery
 - Allow sharing the photo
 
-## Roadmap
+## Upcoming Features
 
 - Allow user to scroll images from left to right & right to left
 - Implement progressive image loading
