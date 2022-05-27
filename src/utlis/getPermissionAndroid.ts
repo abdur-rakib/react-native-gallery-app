@@ -8,6 +8,8 @@ const getPermissionAndroid = async () => {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       return true;
+    } else {
+      SimpleToast.show('Access denied');
     }
   } catch (error: any) {
     SimpleToast.show(error.message);
