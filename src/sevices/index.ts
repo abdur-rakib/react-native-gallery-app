@@ -16,7 +16,7 @@ const handleShareImage = async (item: SHARE_IMAGE_PARAM_TYPE) => {
   try {
     await Share.open(options);
   } catch (err: ERROR_TYPE) {
-    SimpleToast.show(err.message);
+    console.log('🚀 ~ file: index.ts ~ line 19 ~ handleShareImage ~ err', err);
   }
 };
 
