@@ -13,6 +13,7 @@ const AppButton: React.FC<APP_BUTTON_PROP_TYPE> = ({
     <TouchableOpacity
       disabled={disabled}
       onPress={onPress}
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         ...styles.actionButton,
         backgroundColor: disabled ? '#f5f5f54d' : colors.secondary,
