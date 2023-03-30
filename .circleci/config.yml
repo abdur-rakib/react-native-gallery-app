@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/react-native-gallery-app
     docker:
       - image: cimg/node:18.10.0
     steps:
@@ -23,21 +23,21 @@ jobs:
           name: Run tests
           command: yarn test
 
-      - run:
-          name: jest tests
-          command: |
-            mkdir -p test-results/jest
-            yarn run test
-          environment:
-            JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
+      # - run:
+      #     name: jest tests
+      #     command: |
+      #       mkdir -p test-results/jest
+      #       yarn run test
+      #     environment:
+      #       JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
 
       - persist_to_workspace:
           root: ~/react-native-gallery-app
           paths:
             - node_modules
 
-      - store_test_results:
-          path: test-results
+      # - store_test_results:
+      #     path: test-results
 
-      - store_artifacts:
-          path: test-results
+      # - store_artifacts:
+      #     path: test-results
