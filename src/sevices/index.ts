@@ -3,7 +3,7 @@ import {Platform} from 'react-native';
 import Share from 'react-native-share';
 import SimpleToast from 'react-native-simple-toast';
 import RNFetchBlob from 'rn-fetch-blob';
-import {ERROR_TYPE, SHARE_IMAGE_PARAM_TYPE} from '../../types';
+import {SHARE_IMAGE_PARAM_TYPE} from '../../types';
 import getPermissionAndroid from '../utlis/getPermissionAndroid';
 
 // handle share image
@@ -15,7 +15,7 @@ const handleShareImage = async (item: SHARE_IMAGE_PARAM_TYPE) => {
   };
   try {
     await Share.open(options);
-  } catch (err: ERROR_TYPE) {
+  } catch (err) {
     console.log('🚀 ~ file: index.ts ~ line 19 ~ handleShareImage ~ err', err);
   }
 };
