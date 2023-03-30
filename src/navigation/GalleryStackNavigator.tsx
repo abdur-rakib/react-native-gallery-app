@@ -11,7 +11,7 @@ const GalleryStackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{headerTitleAlign: 'center', headerShadowVisible: false}}
+        screenOptions={{headerTitleAlign: 'left', headerShadowVisible: false}}
         initialRouteName="Gallery">
         <Stack.Screen name="Gallery" component={GalleryScreen} />
         <Stack.Screen
