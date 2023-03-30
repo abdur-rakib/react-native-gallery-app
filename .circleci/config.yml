@@ -10,7 +10,9 @@ jobs:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-      - run: yarn
+      - run:
+          name: install packages
+          command: yarn
       - save_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
@@ -22,6 +24,9 @@ jobs:
       - run:
           name: Run tests
           command: yarn test
+      - run:
+          name: Linting
+          command: yarn lint
 
       # - run:
       #     name: jest tests
