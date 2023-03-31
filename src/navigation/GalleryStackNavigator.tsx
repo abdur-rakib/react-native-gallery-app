@@ -15,7 +15,7 @@ const GalleryStackNavigator = () => {
         initialRouteName="Gallery">
         <Stack.Screen name="Gallery" component={GalleryScreen} />
         <Stack.Screen
-          options={({route}) => ({
+          options={({route}: {route: any}) => ({
             headerTitle: () => (
               <HeaderTitle
                 username={route.params.item.username}
