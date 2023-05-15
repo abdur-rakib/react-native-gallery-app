@@ -7,6 +7,7 @@ import GalleryStackNavigator from './src/navigation/GalleryStackNavigator';
 import {colors} from './src/theme';
 
 const queryClient = new QueryClient();
+// some test comment
 
 const App: React.FC = () => {
   // hide splash screen
